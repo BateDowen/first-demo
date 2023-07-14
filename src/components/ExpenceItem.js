@@ -1,16 +1,13 @@
 import "./ExpenceItem.css";
 
-function ExpenceItem() {
-    const date = new Date();
-    const item = 'Car';
-    const price = '3000';
+function ExpenceItem(props) {
 
   return (
     <div className="expense-item">
-      <div>{date.toDateString()}</div>
+      <div>{props.date.toDateString()}</div>
       <div className="expense-item__description">
-        <h2>{item}</h2>
-        <div className="expense-item__price">${price}</div>
+        <h2>{props.title}</h2>
+        <div className="expense-item__price">${props.amount}</div>
       </div>
     </div>
   );
