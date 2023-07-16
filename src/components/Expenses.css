@@ -1,0 +1,13 @@
+.expenses {
+    display:inline-flex;
+    flex-direction: column;
+    background-color: #080000;
+    color: white;
+    border-radius: 12px;
+    justify-content: center;
+    margin-left: 25%;
+    padding: 2%;
+    width: 600px;
+    height: 600px;
+
+}
