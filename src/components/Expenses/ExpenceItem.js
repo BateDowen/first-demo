@@ -3,7 +3,7 @@ import "./ExpenceItem.css";
 import ExpenseDate from "./ExpenseDate";
 
 const ExpenceItem = (props) => {
-  
+
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date}/>
