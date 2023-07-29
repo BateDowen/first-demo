@@ -1,41 +1,50 @@
 import { useState } from "react";
-import Expenses from "./components/Expenses/Expences";
-import NewExpense from "./components/NewExpense/NewExpense";
+import "./App.css";
+import Table from "./components/Table";
+import { calculate, reset } from "./Utils/utils";
 
-const DUMMY_EXPENSES = [
-  {
-    id: "e1",
-    title: "Toilet Paper",
-    amount: 94.12,
-    date: new Date(2020, 7, 14),
-  },
-  { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
-  {
-    id: "e3",
-    title: "Car Insurance",
-    amount: 294.67,
-    date: new Date(2021, 2, 28),
-  },
-  {
-    id: "e4",
-    title: "New Desk (Wooden)",
-    amount: 450,
-    date: new Date(2021, 5, 12),
-  },
-];
 const App = () => {
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
-
-  const addExpenseHandler = (expense) => {
-    setExpenses(prevExpense =>{
-      return [expense, ...prevExpense]
-    });
-  };
-  // console.log(expenses);
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
+      <header className="header">
+        <img src="./invest.png"></img>
+        <h1>Investment calculator</h1>
+      </header>
+
+      <form className="form">
+        <div className="input-group">
+          <p>
+            <label htmlFor="current-savings">Current Savings ($)</label>
+            <input type="number" id="current-savings" name="currentSavings"/>
+          </p>
+          <p>
+            <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
+            <input type="number" id="yearly-contribution" name="yearlySavings"/>
+          </p>
+        </div>
+        <div className="input-group">
+          <p>
+            <label htmlFor="expected-return">
+              Expected Interest (%, per year)
+            </label>
+            <input type="number" id="expected-return" name="expectedReturn"/>
+          </p>
+          <p>
+            <label htmlFor="duration">Investment Duration (years)</label>
+            <input type="number" id="duration" name="duration"/>
+          </p>
+        </div>
+        <p className="actions">
+          <button type="reset" className="buttonAlt" onClick={reset}>
+            Reset
+          </button>
+          <button type="submit" className="button" onClick={calculate}>
+            Calculate
+          </button>
+        </p>
+      </form>
+
+      <Table />
     </div>
   );
 };
