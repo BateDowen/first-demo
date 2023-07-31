@@ -2,6 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import Table from "./components/Table";
 import { calculate, reset } from "./Utils/utils";
+import Button from "./components/Button";
+
+let investCalculation = [{miro:'skljlkj'}];
 
 const App = () => {
   return (
@@ -35,16 +38,17 @@ const App = () => {
           </p>
         </div>
         <p className="actions">
-          <button type="reset" className="buttonAlt" onClick={reset}>
+          <Button type="reset" className="buttonAlt" onClick={reset}>
             Reset
-          </button>
-          <button type="submit" className="button" onClick={calculate}>
+          </Button>
+          <Button type="submit" className="button" props={investCalculation} onClick={calculate}>
             Calculate
-          </button>
+          </Button>
+          
         </p>
       </form>
 
-      <Table />
+      <Table calculations={investCalculation} />
     </div>
   );
 };
