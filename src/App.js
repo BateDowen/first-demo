@@ -1,12 +1,21 @@
 import { useState } from "react";
 import "./App.css";
 import Table from "./components/Table";
-import { calculate, reset } from "./Utils/utils";
-import Button from "./components/Button";
+// import { calculate, reset } from "./Utils/utils";
+import Form from "./components/Form";
 
-let investCalculation = [{miro:'skljlkj'}];
 
 const App = () => {
+  const[ investCalculation, setInvestCalculations] = useState([]);
+  const onCalculateInvestment = (props)=>{
+    setInvestCalculations(prevInvestCalc =>{
+      const updatedCalc = [...prevInvestCalc]
+      // console.log(updatedCalc);
+      updatedCalc.unshift(props)
+      return updatedCalc;
+    })
+  
+  }
   return (
     <div>
       <header className="header">
@@ -14,39 +23,7 @@ const App = () => {
         <h1>Investment calculator</h1>
       </header>
 
-      <form className="form">
-        <div className="input-group">
-          <p>
-            <label htmlFor="current-savings">Current Savings ($)</label>
-            <input type="number" id="current-savings" name="currentSavings"/>
-          </p>
-          <p>
-            <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
-            <input type="number" id="yearly-contribution" name="yearlySavings"/>
-          </p>
-        </div>
-        <div className="input-group">
-          <p>
-            <label htmlFor="expected-return">
-              Expected Interest (%, per year)
-            </label>
-            <input type="number" id="expected-return" name="expectedReturn"/>
-          </p>
-          <p>
-            <label htmlFor="duration">Investment Duration (years)</label>
-            <input type="number" id="duration" name="duration"/>
-          </p>
-        </div>
-        <p className="actions">
-          <Button type="reset" className="buttonAlt" onClick={reset}>
-            Reset
-          </Button>
-          <Button type="submit" className="button" props={investCalculation} onClick={calculate}>
-            Calculate
-          </Button>
-          
-        </p>
-      </form>
+     <Form onAddInvestment={onCalculateInvestment}></Form>
 
       <Table calculations={investCalculation} />
     </div>

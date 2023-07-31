@@ -1,10 +1,20 @@
 
 
+
 const Form = (props) =>{
+    
+    const reset = (ev) =>{
+        ev.preventDefault()
+        let table = document.querySelector('.result');
+        table.classList.add('hidden');
+        const form = document.querySelector('.form');
+        form.reset();
+
+};
+
     const calculate = (ev) =>{
         ev.preventDefault();
         let table = document.querySelector('.result');
-        
         if (table.classList.contains('hidden')) {
             table.classList.remove( 'hidden');
             
@@ -42,7 +52,7 @@ const Form = (props) =>{
           </p>
         </div>
         <p className="actions">
-          <button type="reset" className="buttonAlt">
+          <button type="reset" className="buttonAlt" onClick={reset}>
             Reset
           </button>
           <button type="submit" className="button">
@@ -51,6 +61,6 @@ const Form = (props) =>{
           
         </p>
       </form>
-    )
+     )
 };
 export default Form;
