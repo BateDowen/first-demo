@@ -3,7 +3,9 @@ export const reset = (ev) =>{
         ev.preventDefault()
         let table = document.querySelector('.result');
         table.classList.add('hidden');
-   
+        const form = document.querySelector('.form');
+        form.reset();
+
 };
 
 export const calculate = (ev) =>{
@@ -18,9 +20,6 @@ export const calculate = (ev) =>{
       const formElement = document.querySelector('.form');
       const formData = new FormData(formElement);
       let { currentSavings,yearlySavings,expectedReturn,duration } = Object.fromEntries(formData);
-      console.log(currentSavings);
-      console.log(yearlySavings);
-      console.log(expectedReturn);
-      console.log(duration);
-
+     
+console.log(ev);
 };
