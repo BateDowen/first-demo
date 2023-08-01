@@ -1,4 +1,4 @@
-import UL from "./UL";
+import {  DurationUl, YearlySavings } from "./UL";
 
 
 const Table = ({calculations}) => {
@@ -16,8 +16,8 @@ const Table = ({calculations}) => {
         </thead>
         <tbody>
           <tr>
-            <td>YEAR NUMBER {<UL years={calculations.duration}></UL>}</td>  
-            <td>TOTAL SAVINGS END OF YEAR</td>
+            <td>YEAR NUMBER {<DurationUl counts={calculations}></DurationUl>}</td>  
+            <td>TOTAL SAVINGS END OF YEAR {<YearlySavings counts={calculations}></YearlySavings>}</td>
             <td>INTEREST GAINED IN YEAR</td>
             <td>TOTAL INTEREST GAINED</td>
             <td>TOTAL INVESTED CAPITAL</td>
