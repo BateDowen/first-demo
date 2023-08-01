@@ -9,9 +9,7 @@ const App = () => {
   const[ investCalculation, setInvestCalculations] = useState([]);
   const onCalculateInvestment = (props)=>{
     setInvestCalculations(prevInvestCalc =>{
-      const updatedCalc = [...prevInvestCalc]
-      // console.log(updatedCalc);
-      updatedCalc.unshift(props)
+      const updatedCalc = props;
       return updatedCalc;
     })
   
