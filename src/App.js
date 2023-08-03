@@ -1,31 +1,26 @@
-import { useState } from "react";
-import "./App.css";
-import Table from "./components/Table";
-// import { calculate, reset } from "./Utils/utils";
-import Form from "./components/Form";
+import React, { useState } from 'react';
 
+import AddUser from './components/Users/AddUser';
+import UsersList from './components/Users/UsersList';
 
-const App = () => {
-  const[ investCalculation, setInvestCalculations] = useState([]);
-  const onCalculateInvestment = (props)=>{
-    setInvestCalculations(prevInvestCalc =>{
-      const updatedCalc = props;
-      return updatedCalc;
-    })
-  
-  }
+function App() {
+  const [usersList, setUsersList] = useState([]);
+
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [
+        ...prevUsersList,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ];
+    });
+  };
+
   return (
     <div>
-      <header className="header">
-        <img src="./invest.png"></img>
-        <h1>Investment calculator</h1>
-      </header>
-
-     <Form onAddInvestment={onCalculateInvestment}></Form>
-
-      <Table calculations={investCalculation} />
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList} />
     </div>
   );
-};
+}
 
 export default App;
